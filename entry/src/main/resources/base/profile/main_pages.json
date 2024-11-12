@@ -1,0 +1,8 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/layout/RowPage",
+    "pages/layout/ColumnPage",
+    "pages/layout/ScrollPage"
+  ]
+}
