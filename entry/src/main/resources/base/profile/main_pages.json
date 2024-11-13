@@ -6,6 +6,8 @@
     "pages/layout/ScrollPage",
     "pages/layout/FlexPage",
     "pages/layout/LayoutPage1",
-    "pages/LoginPage"
+    "pages/LoginPage",
+    "pages/example/TodoListPage",
+    "pages/state/StatePage1"
   ]
 }
