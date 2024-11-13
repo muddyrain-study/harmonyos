@@ -3,6 +3,8 @@
     "pages/Index",
     "pages/layout/RowPage",
     "pages/layout/ColumnPage",
-    "pages/layout/ScrollPage"
+    "pages/layout/ScrollPage",
+    "pages/layout/FlexPage",
+    "pages/layout/LayoutPage1"
   ]
 }
