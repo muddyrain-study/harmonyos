@@ -8,6 +8,7 @@
     "pages/layout/LayoutPage1",
     "pages/LoginPage",
     "pages/example/TodoListPage",
-    "pages/state/StatePage1"
+    "pages/state/StatePage1",
+    "pages/state/StatePage2"
   ]
 }
