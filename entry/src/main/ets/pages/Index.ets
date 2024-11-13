@@ -15,13 +15,14 @@ struct Index {
   build() {
     Row() {
       Column({ space: 20 }) {
+        Image($r("app.media.1")).width(200).height(200).objectFit(ImageFit.Contain)
         Text(this.message + this.num).fontSize(50).fontWeight(FontWeight.Bold).border({
           width:2,
           style:BorderStyle.Dashed,
           color:Color.Green,
           radius: 5
         })
-        Button('点击').onClick(this.handleClick)
+        Button('点击').onClick(this.handleClick).width($r('app.float.button_width'))
         TestComp()
       }
       .width('100%')
