@@ -1,7 +1,7 @@
 @Entry
 @Component
 struct UserInfoPage {
-  @State user: UserInfo = new UserInfo(1, '张三', '12345678901', $r('app.media.1'), new Address('广东', '深圳'))
+  @State user: UserInfo = new UserInfo(1, '张三', '12345678901', $r('app.media.1'), new Address('广东', new City('深圳', '南山', '科技园')))
   @State title_name: string = '用户信息'
 
   build() {
@@ -115,17 +115,12 @@ struct UserInfoPage {
         //     .borderRadius(10)
         // }.width('95%')
         AddressComp({
-          address: this.user.address
+          address: this.user.address,
+          city: this.user.address.city
         })
         Button('显示 Log')
           .onClick(() => {
             console.log(JSON.stringify(this.user))
-          })
-
-        Button('修改')
-          .onClick(() => {
-            this.user.address.province = '浙江'
-            this.user.address.city = '杭州'
           })
       }
       .width('100%')
@@ -138,6 +133,7 @@ struct UserInfoPage {
 @Component
 struct AddressComp {
   @ObjectLink address: Address
+  @ObjectLink city: City
   build() {
     Column({
       space: 12
@@ -156,7 +152,30 @@ struct AddressComp {
           .layoutWeight(1)
           .borderRadius(10)
         TextInput({
-          text: this.address.city
+          text: this.city.name
+        })
+          .padding({
+            left: 20
+          })
+          .layoutWeight(1)
+          .borderRadius(10)
+      }.width('95%')
+
+      Row({ space: 12 }) {
+        Text('区域：')
+          .width(100)
+          .fontSize(18)
+          .textAlign(TextAlign.End)
+        TextInput({
+          text: this.city.district
+        })
+          .padding({
+            left: 20
+          })
+          .layoutWeight(1)
+          .borderRadius(10)
+        TextInput({
+          text: this.city.street
         })
           .padding({
             left: 20
@@ -170,7 +189,16 @@ struct AddressComp {
           this.address.province = '浙江'
         })
         Button('修改城市').onClick(() => {
-          this.address.city = '杭州'
+          this.city.name = '杭州'
+        })
+      }.width('95%').justifyContent(FlexAlign.Center)
+
+      Row({ space: 12 }) {
+        Button('修改区域').onClick(() => {
+          this.city.district = '西湖区'
+        })
+        Button('修改街道').onClick(() => {
+          this.city.street = '西湖'
         })
       }.width('95%').justifyContent(FlexAlign.Center)
     }
@@ -196,10 +224,23 @@ class UserInfo {
 @Observed
 class Address {
   province: string
-  city: string
+  city: City
 
-  constructor(province: string, city: string) {
+  constructor(province: string, city: City) {
     this.province = province
     this.city = city
+  }
+}
+
+@Observed
+class City {
+  name: string
+  district: string
+  street: string
+
+  constructor(name: string, district: string, street: string) {
+    this.name = name
+    this.district = district
+    this.street = street
   }
 }
