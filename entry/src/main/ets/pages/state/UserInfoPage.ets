@@ -1,8 +1,10 @@
 @Entry
 @Component
 struct UserInfoPage {
-  @State user: UserInfo = new UserInfo(1, '张三', '12345678901', $r('app.media.1'), new Address('广东', new City('深圳', '南山', '科技园')))
+  @State user: UserInfo =
+    new UserInfo(1, '张三', '12345678901', $r('app.media.1'), new Address('广东', new City('深圳', '南山', '科技园')))
   @State title_name: string = '用户信息'
+  @State isShowAvatar: boolean = true
 
   build() {
     Scroll() {
@@ -44,8 +46,23 @@ struct UserInfoPage {
               .borderRadius(50)
               .objectFit(ImageFit.Cover)
           }.layoutWeight(1)
+          .visibility(this.isShowAvatar ? Visibility.Visible : Visibility.None)
+          .animation({
+            duration: 1000,
+            curve: Curve.Linear
+          })
 
+          Toggle({ type: ToggleType.Switch,isOn: this.isShowAvatar })
+            .width(100)
+            .height(50)
+            .onChange((isOn) => {
+              this.isShowAvatar = isOn
+            })
         }
+
+        Button('头像是否显示').onClick(() => {
+          this.isShowAvatar = !this.isShowAvatar
+        })
 
         Row({ space: 12 }) {
           Text('编号：')
@@ -134,6 +151,7 @@ struct UserInfoPage {
 struct AddressComp {
   @ObjectLink address: Address
   @ObjectLink city: City
+
   build() {
     Column({
       space: 12
