@@ -10,6 +10,7 @@
     "pages/example/TodoListPage",
     "pages/state/StatePage1",
     "pages/state/StatePage2",
-    "pages/state/UserInfoPage"
+    "pages/state/UserInfoPage",
+    "pages/state/ForEachPage"
   ]
 }
