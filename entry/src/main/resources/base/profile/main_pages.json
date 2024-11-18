@@ -11,6 +11,7 @@
     "pages/state/StatePage1",
     "pages/state/StatePage2",
     "pages/state/UserInfoPage",
-    "pages/state/ForEachPage"
+    "pages/state/ForEachPage",
+    "pages/layout/ListPage"
   ]
 }
